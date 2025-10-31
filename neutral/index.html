@@ -6,12 +6,10 @@
 <title>Man of the Match — Neutral</title>
 <style>
   :root{
-    /* Neutral defaults; replaced automatically when a logo is uploaded */
-    --accent: #64748b;       /* slate-500 */
-    --accent-700: #475569;   /* slate-600 */
-    --accent-contrast: #ffffff;
-
-    --bg:#f6f7f8;
+    /* Neutral defaults; can be tinted later from logo */
+    --accent:#64748b;     /* slate-500 */
+    --accent-700:#475569; /* slate-600 */
+    --bg:#f7f7f7;
     --card:#ffffff;
     --muted:#6b7280;
     --border:#e5e7eb;
@@ -20,90 +18,49 @@
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:#111;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
-
-  header{
-    background:
-      linear-gradient(90deg, color-mix(in oklab, var(--accent) 15%, white) 0%,
-                           color-mix(in oklab, var(--accent) 0%,  white) 60%,
-                           color-mix(in oklab, var(--accent) 15%, white) 100%);
-    border-bottom:4px solid var(--accent);
-    padding:18px 16px 24px
-  }
-
+  header{background:linear-gradient(90deg,#fafafa,#f3f4f6 50%,#fafafa);border-bottom:4px solid var(--accent);padding:18px 16px 24px}
   .wrap{max-width:1040px;margin:0 auto;padding:0 16px}
   .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-  h1{margin:8px 0 0;font-size:2.2rem;letter-spacing:.2px;color:#0f172a}
-  .subtitle{margin:.35rem 0 0;color:#1f2937;opacity:.85}
+  h1{margin:8px 0 0;font-size:2.2rem;letter-spacing:.2px;color:#111}
+  .subtitle{margin:.35rem 0 0;color:#222;opacity:.85}
   .top-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
-
-  .btn{
-    appearance:none;border:0;border-radius:999px;padding:.7rem 1.1rem;
-    font-weight:700;cursor:pointer;box-shadow:var(--shadow);transition:transform .05s ease
-  }
+  .btn{appearance:none;border:0;border-radius:999px;padding:.7rem 1.1rem;font-weight:700;cursor:pointer;box-shadow:var(--shadow);transition:transform .05s ease}
   .btn:active{transform:translateY(1px)}
-  .btn-primary{background:var(--accent);color:var(--accent-contrast)}
+  .btn-primary{background:var(--accent);color:#fff}
   .btn-primary:hover{background:var(--accent-700)}
   .btn-outline{background:#fff;border:2px solid var(--accent);color:var(--accent)}
   .btn-danger{background:#fff;border:2px solid #ef4444;color:#ef4444}
-
   input,button{font-size:1rem}
-  input{
-    width:100%;border:1px solid var(--border);border-radius:10px;
-    padding:.75rem .9rem;background:#fff;outline:none
-  }
-  input:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent)}
-
+  input{width:100%;border:1px solid var(--border);border-radius:10px;padding:.75rem .9rem;background:#fff;outline:none}
+  input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(100,116,139,.15)}
   .label{font-weight:700;margin-bottom:6px}
   .muted{color:var(--muted);font-size:.92rem}
 
-  #teamName{
-    font-size:1.4rem;font-weight:700;padding:1rem .95rem;border:2px solid var(--accent);
-    background:#fbfbfd
-  }
-  #teamLogo{
-    max-height:140px;max-width:95%;display:none;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,.1);
-    object-fit:contain;background:#fff
-  }
-  #uploadLogoBtn,#removeLogoBtn{border-radius:10px;padding:.6rem 1rem;font-weight:700;cursor:pointer}
-  #uploadLogoBtn{background:var(--accent);color:var(--accent-contrast);border:none}
-  #uploadLogoBtn:hover{background:var(--accent-700)}
-  #removeLogoBtn{background:#fff;border:2px solid #ef4444;color:#ef4444}
+  #teamName{font-size:1.4rem;font-weight:700;padding:1rem .95rem;border:2px solid var(--accent);background:#fff}
+  #teamLogo{max-height:140px;max-width:95%;display:none;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,.1);object-fit:contain;background:#fff}
 
   main{padding:22px 0}
   .grid{display:grid;gap:18px;grid-template-columns:repeat(12,1fr)}
   .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
   .span-12{grid-column:span 12}
   .span-6{grid-column:span 6}
-  .tag{
-    background:color-mix(in oklab, var(--accent) 15%, white);
-    border:1px solid color-mix(in oklab, var(--accent) 40%, white);
-    border-radius:999px;padding:.2rem .55rem;font-weight:700;color:#0f172a
-  }
-
+  .tag{background:#e5e7eb;border:1px solid #cbd5e1;border-radius:999px;padding:.2rem .55rem;font-weight:700}
   .list{border:1px solid var(--border);border-radius:12px;overflow:hidden}
   .list .head,.list .rowi{display:grid;grid-template-columns:72px 1fr 140px;align-items:center}
   .list .head{background:#fafafa;color:#111;font-weight:700}
   .list .cell{padding:.65rem .75rem;border-bottom:1px solid var(--border)}
   .list .rowi:last-child .cell{border-bottom:0}
-
-  .vote-btn{
-    border-radius:9px;border:1px solid var(--accent);
-    color:var(--accent-contrast);background:var(--accent);
-    padding:.45rem .7rem;font-weight:700;cursor:pointer
-  }
+  .vote-btn{border-radius:9px;border:1px solid var(--accent);color:#fff;background:var(--accent);padding:.45rem .7rem;font-weight:700;cursor:pointer}
   .vote-btn:hover{background:var(--accent-700)}
-
-  .status{background:#e8f5ff;border:1px solid #b6dcff;border-radius:10px;padding:.6rem .75rem;margin-bottom:10px}
+  .status{background:#eaffd6;border:1px solid #a3d677;border-radius:10px;padding:.6rem .75rem;margin-bottom:10px}
   .qrbox{width:180px;min-height:180px;border:1px dashed var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;background:#fff}
   .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
   .code-group{display:grid;gap:10px;grid-template-columns:1fr auto;align-items:center}
   .code-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-  @media (max-width:900px){
-    .span-6{grid-column:span 12}
-    .list .head,.list .rowi{grid-template-columns:64px 1fr 120px}
-    .code-group{grid-template-columns:1fr}
-  }
+  @media (max-width:900px){.span-6{grid-column:span 12}.list .head,.list .rowi{grid-template-columns:64px 1fr 120px}.code-group{grid-template-columns:1fr}}
 </style>
+
+<!-- QR code library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 </head>
 <body>
@@ -114,15 +71,15 @@
       <img id="teamLogo" src="" alt="Team logo">
       <br>
       <div class="row" style="justify-content:center">
-        <button id="uploadLogoBtn" type="button">Upload logo</button>
-        <button id="removeLogoBtn" type="button" title="Remove current logo">Remove logo</button>
+        <button id="uploadLogoBtn" class="btn btn-primary" type="button">Upload logo</button>
+        <button id="removeLogoBtn" class="btn btn-danger" type="button" title="Remove current logo">Remove logo</button>
       </div>
-      <div class="muted" style="margin-top:6px">Logo syncs to everyone after you create/join a match. Theme updates to match your logo.</div>
+      <div class="muted" style="margin-top:6px">Create or join a match first. Logo syncs to everyone in that match.</div>
       <div id="logoError" class="muted" style="color:#b91c1c;margin-top:6px"></div>
     </div>
 
     <div class="label" style="margin:0 0 6px">Team name</div>
-    <input id="teamName" placeholder="e.g. Neutral FC" />
+    <input id="teamName" placeholder="e.g. Your Team" />
 
     <div class="row" style="justify-content:space-between;align-items:flex-end;margin-top:10px">
       <div>
@@ -156,7 +113,6 @@
         </div>
         <div class="muted" style="margin-top:6px">Paste a code to join, or click <b>New match</b> above to start one.</div>
       </div>
-
       <div id="qrBox" class="qrbox"></div>
     </div>
   </div>
@@ -202,344 +158,277 @@
 </main>
 
 <script type="module">
-window.addEventListener('DOMContentLoaded', init);
+/*** 1) Firebase imports ***/
+const [{ initializeApp }, fspkg] = await Promise.all([
+  import("https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"),
+  import("https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js"),
+]);
+const { getFirestore, doc, setDoc, getDoc, onSnapshot, updateDoc } = fspkg;
 
-async function init(){
-  const [{ initializeApp }, fspkg] = await Promise.all([
-    import("https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"),
-    import("https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js"),
-  ]);
-  const { getFirestore, doc, setDoc, getDoc, onSnapshot, updateDoc } = fspkg;
+/*** 2) >>> REPLACE THIS CONFIG WITH YOUR motm-neutral WEB APP CONFIG <<< ***/
+const firebaseConfig = {
+  apiKey: "YOUR_MOTM_NEUTRAL_API_KEY",
+  authDomain: "YOUR_MOTM_NEUTRAL_AUTH_DOMAIN",
+  projectId: "motm-neutral",               // <- must be motm-neutral
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+/*** END CONFIG ***/
 
-  // Uses your existing working database so this page works immediately:
-  const firebaseConfig = {
-    apiKey: "AIzaSyBqrlHZG_ZejqNKF97momPHTF9d-GlUTg",
-    authDomain: "motm--pumas.firebaseapp.com",
-    projectId: "motm--pumas",
-    messagingSenderId: "953454926915",
-    appId: "1:953454926915:web:8744eeef4bf9d967e488f6"
-  };
-  // If you prefer a separate DB, replace with motm-neutral web app config.
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
 
-  // DOM
-  const onlineState = document.getElementById('onlineState');
-  const teamName = document.getElementById('teamName');
-  const matchCodeInput = document.getElementById('matchCode');
-  const playersList = document.getElementById('playersList');
-  const playerCount = document.getElementById('playerCount');
-  const voteList = document.getElementById('voteList');
-  const voteState = document.getElementById('voteState');
-  const shareLink = document.getElementById('shareLink');
-  const qrBox = document.getElementById('qrBox');
-  const results = document.getElementById('results');
-  const voteCount = document.getElementById('voteCount');
-  const btnNew = document.getElementById('newMatch');
-  const btnJoin = document.getElementById('joinBtn');
-  const btnAdd = document.getElementById('addPlayer');
-  const btnCopy = document.getElementById('copyLink');
-  const btnReset = document.getElementById('resetVotes');
-  const pNum = document.getElementById('pNum');
-  const pName = document.getElementById('pName');
+/*** DOM refs ***/
+const onlineState = document.getElementById('onlineState');
+const teamName = document.getElementById('teamName');
+const matchCodeInput = document.getElementById('matchCode');
+const playersList = document.getElementById('playersList');
+const playerCount = document.getElementById('playerCount');
+const voteList = document.getElementById('voteList');
+const voteState = document.getElementById('voteState');
+const shareLink = document.getElementById('shareLink');
+const qrBox = document.getElementById('qrBox');
+const results = document.getElementById('results');
+const voteCount = document.getElementById('voteCount');
+const btnNew = document.getElementById('newMatch');
+const btnJoin = document.getElementById('joinBtn');
+const btnAdd = document.getElementById('addPlayer');
+const btnCopy = document.getElementById('copyLink');
+const btnReset = document.getElementById('resetVotes');
+const pNum = document.getElementById('pNum');
+const pName = document.getElementById('pName');
+const uploadBtn = document.getElementById('uploadLogoBtn');
+const removeBtn = document.getElementById('removeLogoBtn');
+const logoInput = document.getElementById('logoUpload');
+const logoImg = document.getElementById('teamLogo');
+const logoError = document.getElementById('logoError');
 
-  // Logo
-  const uploadBtn = document.getElementById('uploadLogoBtn');
-  const removeBtn = document.getElementById('removeLogoBtn');
-  const logoInput = document.getElementById('logoUpload');
-  const logoImg = document.getElementById('teamLogo');
-  const logoError = document.getElementById('logoError');
+/*** state ***/
+const deviceId = getOrMakeId('motm_device_id');
+let code = null, unsub = null, localPlayers = [];
 
-  // State
-  const app = initializeApp(firebaseConfig);
-  const db  = getFirestore(app);
-  const deviceId = getOrMakeId('motm_device_id');
-  let code = null, unsub = null, localPlayers = [];
-
-  function setOnline(){
-    onlineState.textContent = navigator.onLine
-      ? "🟢 Online. Live syncing enabled."
-      : "🔴 Offline. Changes will sync when you're back online.";
-  }
-  window.addEventListener('online', setOnline);
-  window.addEventListener('offline', setOnline);
-  setOnline();
-
-  function getOrMakeId(key){
-    let v = localStorage.getItem(key);
-    if(!v){ v = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now())) + Math.random().toString(16).slice(2); localStorage.setItem(key,v); }
-    return v;
-  }
-  function makeCode(len=6){
-    const chars="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-    let s=""; for(let i=0;i<len;i++) s += chars[(Math.random()*chars.length)|0];
-    return s;
-  }
-  function renderQR(url){
-    qrBox.innerHTML="";
-    if(typeof window.QRCode === "function"){
-      new window.QRCode(qrBox,{text:url,width:180,height:180});
-    }else{
-      const img=new Image(); img.width=180; img.height=180; img.alt="QR";
-      img.src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data="+encodeURIComponent(url);
-      qrBox.appendChild(img);
-    }
-  }
-  function updateShare(){
-    if(!code){ shareLink.value=""; qrBox.innerHTML=""; return; }
-    const url = `${location.origin}?match=${code}`;
-    shareLink.value = url;
-    renderQR(url);
-  }
-  async function sha256Base64(text){
-    const enc=new TextEncoder().encode(text);
-    const buf=await crypto.subtle.digest('SHA-256',enc);
-    const bytes=new Uint8Array(buf); let bin=""; bytes.forEach(b=>bin+=String.fromCharCode(b));
-    return btoa(bin);
-  }
-
-  function subscribe(c){
-    if(unsub) unsub();
-    const refDoc = doc(db,"matches",c);
-    unsub = onSnapshot(refDoc,(snap)=>{
-      const d=snap.data()||{};
-      teamName.value = d.team || "";
-      if(d.logoDataUrl){
-        logoImg.src = d.logoDataUrl; logoImg.style.display='block';
-        tryThemeFromImageUrl(d.logoDataUrl);
-      }
-      setPlayers(d.players || []);
-      renderResults(d.votes || {});
-    });
-  }
-
-  function setPlayers(list){
-    localPlayers = list.slice().sort((a,b)=>(+a.number||0)-(+b.number||0));
-    playerCount.textContent = `${localPlayers.length} player${localPlayers.length===1?"":"s"}`;
-    playersList.querySelectorAll('.rowi').forEach(n=>n.remove());
-    localPlayers.forEach((p,idx)=>{
-      const row=document.createElement('div'); row.className='rowi';
-      row.style.display='grid'; row.style.gridTemplateColumns='72px 1fr 140px'; row.style.alignItems='center';
-      row.innerHTML = `
-        <div class="cell mono">${p.number||""}</div>
-        <div class="cell">${p.name||""}</div>
-        <div class="cell"><button data-i="${idx}" class="vote-btn">Vote</button></div>`;
-      playersList.appendChild(row);
-    });
-    playersList.querySelectorAll('.vote-btn').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        const i=+btn.dataset.i; if(localPlayers[i]) castVote(localPlayers[i].name);
-      });
-    });
-    voteList.innerHTML = localPlayers.map(p=>
-      `<button class="vote-btn" data-name="${p.name}">${p.number?`${p.number}. `:""}${p.name}</button>`
-    ).join(" ");
-    voteList.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>castVote(b.dataset.name)));
-  }
-
-  function renderResults(votes){
-    const counts={}; Object.values(votes||{}).forEach(v=>{ counts[v]=(counts[v]||0)+1; });
-    const arr=Object.entries(counts).sort((a,b)=>b[1]-a[1]);
-    voteCount.textContent = `${Object.keys(votes||{}).length} vote${Object.keys(votes||{}).length===1?"":"s"}`;
-    results.innerHTML = arr.length ? arr.map(([name,n])=>`<div style="padding:.35rem 0">${name}: <b>${n}</b></div>`).join("") : `<div class="muted">No votes yet</div>`;
-  }
-
-  async function castVote(name){
-    if(!code) return alert("Create or join a match first.");
-    const refDoc = doc(db,"matches",code);
-    const snap = await getDoc(refDoc);
-    const data = snap.data() || {};
-    const votes = data.votes || {};
-    votes[deviceId] = name;
-    await setDoc(refDoc,{ votes },{ merge:true });
-    voteState.textContent = "Voted";
-  }
-
-  async function createMatch(){
-    code = makeCode(); matchCodeInput.value = code;
-    const refDoc = doc(db,"matches",code);
-    await setDoc(refDoc,{ team: teamName.value || "Neutral FC", players:[], votes:{}, created:new Date().toISOString() });
-    localStorage.setItem("motm_last_code", code);
-    subscribe(code);
-    updateShare();
-  }
-  async function joinMatch(){
-    const c=(matchCodeInput.value||"").trim().toUpperCase();
-    if(!c) return alert("Enter a match code");
-    code=c; localStorage.setItem("motm_last_code", code);
-    subscribe(code);
-    updateShare();
-  }
-
-  async function ensurePasswordAndReset(){
-    if(!code) return alert("No match active");
-    const refDoc=doc(db,"matches",code);
-    const snap=await getDoc(refDoc);
-    const data=snap.data()||{};
-    const hasPass=!!data.passHash;
-    if(!hasPass){
-      const pass=prompt("Set a password for this match (used to reset votes):");
-      if(!pass) return;
-      const confirmPass=prompt("Confirm password:"); if(pass!==confirmPass){alert("Passwords do not match.");return;}
-      const hash=await sha256Base64(pass); await updateDoc(refDoc,{ passHash:hash });
-      alert("Password set for this match. Press Reset again to clear votes.");
-      return;
-    }else{
-      const entry=prompt("Enter reset password:"); if(entry==null) return;
-      const hash=await sha256Base64(entry); if(hash!==data.passHash){alert("Incorrect password.");return;}
-      if(!confirm("Reset all votes for this match?")) return;
-      await updateDoc(refDoc,{ votes:{} }); alert("Votes reset.");
-    }
-  }
-
-  // Upload/remove logo
-  uploadBtn.addEventListener('click',()=>logoInput.click());
-  logoImg.addEventListener('click',()=>logoInput.click());
-
-  removeBtn.addEventListener('click', async()=>{
-    logoImg.src=""; logoImg.style.display='none'; logoInput.value="";
-    logoError.textContent="";
-    if(code){ await updateDoc(doc(db,"matches",code),{ logoDataUrl:"" }); }
-    applyTheme('#64748b'); // reset to neutral
-  });
-
-  logoInput.addEventListener('change', async (e)=>{
-    logoError.textContent="";
-    const file=e.target.files && e.target.files[0];
-    if(!file) return;
-    if(!code){ alert("Create or join a match first, then upload the logo."); return; }
-    try{
-      const dataUrl=await downscaleToDataUrl(file, 900, 0.75);
-      const bytes = Math.ceil((dataUrl.length*3)/4);
-      if(bytes > 900*1024){
-        logoError.textContent="Logo is still too large after compression. Please choose a smaller image (screenshot or crop).";
-        return;
-      }
-      await updateDoc(doc(db,"matches",code),{ logoDataUrl:dataUrl });
-      logoImg.src=dataUrl; logoImg.style.display='block';
-      tryThemeFromImageUrl(dataUrl);
-    }catch(err){
-      console.error(err);
-      logoError.textContent = err && err.message ? err.message : "Could not process image. Try a smaller photo.";
-    }
-  });
-
-  // Robust decode + resize
-  async function downscaleToDataUrl(file, maxDim=900, quality=0.75){
-    const bmp = await loadBitmap(file);
-    const w = bmp.width || bmp.naturalWidth, h = bmp.height || bmp.naturalHeight;
-    const s = Math.min(1, maxDim/Math.max(w,h));
-    const outW = Math.max(1, Math.round(w*s)), outH = Math.max(1, Math.round(h*s));
-    const cv = document.createElement('canvas'); cv.width=outW; cv.height=outH;
-    const ctx = cv.getContext('2d'); ctx.fillStyle='#fff'; ctx.fillRect(0,0,outW,outH); ctx.drawImage(bmp,0,0,outW,outH);
-    let url=cv.toDataURL('image/jpeg', quality); if(!url || url.length<32) url=cv.toDataURL('image/png');
-    try{ bmp.close && bmp.close(); }catch{}
-    return url;
-  }
-  async function loadBitmap(file){
-    const type=(file.type||'').toLowerCase(); const name=(file.name||'').toLowerCase();
-    if(type.includes('heic')||type.includes('heif')||name.endsWith('.heic')||name.endsWith('.heif')){
-      throw new Error('This phone saved the photo as HEIC/HEIF, which the browser cannot decode. Open the photo, take a screenshot, or export as JPG/PNG and try again.');
-    }
-    if('createImageBitmap' in window){
-      try{ return await createImageBitmap(file, {imageOrientation:'from-image', premultiplyAlpha:'default'}); }catch(e){}
-    }
-    return await new Promise((res,rej)=>{
-      const url=URL.createObjectURL(file); const img=new Image();
-      img.onload=()=>{ URL.revokeObjectURL(url); res(img); };
-      img.onerror=()=>{ URL.revokeObjectURL(url); rej(new Error('Image decode failed. Try a smaller image or screenshot.')); };
-      img.src=url;
-    });
-  }
-
-  // Theme from logo
-  function tryThemeFromImageUrl(dataUrl){
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload = ()=>{
-      const color = extractDominantColor(img);
-      applyTheme(color);
-    };
-    img.src = dataUrl;
-  }
-  function extractDominantColor(img){
-    const maxSide = 96;
-    const r = img.width / img.height;
-    const w = r>=1 ? maxSide : Math.round(maxSide*r);
-    const h = r>=1 ? Math.round(maxSide/r) : maxSide;
-    const cv = document.createElement('canvas'); cv.width=w; cv.height=h;
-    const ctx = cv.getContext('2d', { willReadFrequently: true });
-    ctx.drawImage(img, 0, 0, w, h);
-    const { data } = ctx.getImageData(0,0,w,h);
-
-    const buckets = new Map();
-    for(let i=0;i<data.length;i+=4){
-      const r=data[i], g=data[i+1], b=data[i+2], a=data[i+3];
-      if(a<180) continue;
-      const max = Math.max(r,g,b), min = Math.min(r,g,b);
-      if(max>240 && min>220) continue; // skip near-white
-      if(max<25) continue;             // skip almost-black
-      const qr=r>>4, qg=g>>4, qb=b>>4; // 16 levels per channel
-      const key = (qr<<8)|(qg<<4)|qb;
-      buckets.set(key,(buckets.get(key)||0)+1);
-    }
-    let bestKey = null, best = 0;
-    for(const [k,c] of buckets){ if(c>best){ best=c; bestKey=k; } }
-    if(bestKey==null) return '#64748b';
-    const qr=(bestKey>>8)&0xF, qg=(bestKey>>4)&0xF, qb=bestKey&0xF;
-    const r8=(qr<<4)+8, g8=(qg<<4)+8, b8=(qb<<4)+8;
-    return rgbToHex(r8,g8,b8);
-  }
-  function rgbToHex(r,g,b){ return '#'+[r,g,b].map(x=>x.toString(16).padStart(2,'0')).join(''); }
-  function luminance(r,g,b){
-    const sr=[r,g,b].map(v=>{ v/=255; return v<=0.03928 ? v/12.92 : Math.pow((v+0.055)/1.055,2.4); });
-    return 0.2126*sr[0]+0.7152*sr[1]+0.0722*sr[2];
-  }
-  function hexToRgb(hex){
-    const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return m?{r:parseInt(m[1],16),g:parseInt(m[2],16),b:parseInt(m[3],16)}:null;
-  }
-  function darken(hex, pct){
-    const c=hexToRgb(hex); if(!c) return hex;
-    const f=(v)=>Math.max(0, Math.round(v*(1-pct)));
-    return rgbToHex(f(c.r), f(c.g), f(c.b));
-  }
-  function chooseContrast(hex){
-    const c=hexToRgb(hex)||{r:100,g:100,b:100};
-    return luminance(c.r,c.g,c.b) > 0.55 ? '#111111' : '#ffffff';
-  }
-  function applyTheme(hex){
-    const root = document.documentElement;
-    const darker = darken(hex, 0.25);
-    const contrast = chooseContrast(hex);
-    root.style.setProperty('--accent', hex);
-    root.style.setProperty('--accent-700', darker);
-    root.style.setProperty('--accent-contrast', contrast);
-  }
-
-  // Wire up
-  document.getElementById('addPlayer').addEventListener('click', async ()=>{
-    if(!code) return alert("Create or join a match first.");
-    const number=pNum.value.trim(); const name=pName.value.trim();
-    if(!name) return alert("Enter a player name");
-    const refDoc=doc(db,"matches",code); const snap=await getDoc(refDoc);
-    const d=snap.data()||{}; const players=d.players||[]; players.push({number,name});
-    await setDoc(refDoc,{players},{merge:true});
-    pNum.value=""; pName.value=""; pNum.focus();
-  });
-  btnCopy.addEventListener('click',()=>{
-    if(!shareLink.value) return;
-    navigator.clipboard.writeText(shareLink.value);
-    btnCopy.textContent="Copied!"; setTimeout(()=>btnCopy.textContent="Copy link",1200);
-  });
-  btnReset.addEventListener('click', ensurePasswordAndReset);
-  btnNew.addEventListener('click', createMatch);
-  btnJoin.addEventListener('click', joinMatch);
-
-  const qs=new URLSearchParams(location.search);
-  const incoming=(qs.get("match")||"").toUpperCase();
-  const last=localStorage.getItem("motm_last_code")||"";
-  if(incoming){ matchCodeInput.value=incoming; joinMatch(); }
-  else if(last){ matchCodeInput.value=last; joinMatch(); }
+/*** network indicator ***/
+function setOnline(){
+  onlineState.textContent = navigator.onLine
+    ? "🟢 Online. Live syncing enabled."
+    : "🔴 Offline. Changes will sync when you're back online.";
 }
+window.addEventListener('online', setOnline);
+window.addEventListener('offline', setOnline);
+setOnline();
+
+function getOrMakeId(key){
+  let v = localStorage.getItem(key);
+  if(!v){ v = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now())) + Math.random().toString(16).slice(2); localStorage.setItem(key,v); }
+  return v;
+}
+function makeCode(len=6){
+  const chars="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  let s=""; for(let i=0;i<len;i++) s += chars[(Math.random()*chars.length)|0];
+  return s;
+}
+function renderQR(url){
+  qrBox.innerHTML="";
+  if(typeof window.QRCode === "function"){
+    new window.QRCode(qrBox,{text:url,width:180,height:180});
+  }else{
+    const img=new Image(); img.width=180; img.height=180; img.alt="QR";
+    img.src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data="+encodeURIComponent(url);
+    qrBox.appendChild(img);
+  }
+}
+function updateShare(){
+  if(!code){ shareLink.value=""; qrBox.innerHTML=""; return; }
+  const url = `${location.origin}?match=${code}`;
+  shareLink.value = url;
+  renderQR(url);
+}
+async function sha256Base64(text){
+  const enc=new TextEncoder().encode(text);
+  const buf=await crypto.subtle.digest('SHA-256',enc);
+  const bytes=new Uint8Array(buf); let bin=""; bytes.forEach(b=>bin+=String.fromCharCode(b));
+  return btoa(bin);
+}
+
+/*** live match subscription ***/
+function subscribe(c){
+  if(unsub) unsub();
+  const refDoc = doc(db,"matches",c);
+  unsub = onSnapshot(refDoc,(snap)=>{
+    const d=snap.data()||{};
+    teamName.value = d.team || "";
+    if(d.logoDataUrl){ logoImg.src = d.logoDataUrl; logoImg.style.display='block'; }
+    setPlayers(d.players || []);
+    renderResults(d.votes || {});
+  });
+}
+function setPlayers(list){
+  localPlayers = list.slice().sort((a,b)=>(+a.number||0)-(+b.number||0));
+  playerCount.textContent = `${localPlayers.length} player${localPlayers.length===1?"":"s"}`;
+  playersList.querySelectorAll('.rowi').forEach(n=>n.remove());
+  localPlayers.forEach((p,idx)=>{
+    const row=document.createElement('div'); row.className='rowi';
+    row.style.display='grid'; row.style.gridTemplateColumns='72px 1fr 140px'; row.style.alignItems='center';
+    row.innerHTML = `
+      <div class="cell mono">${p.number||""}</div>
+      <div class="cell">${p.name||""}</div>
+      <div class="cell"><button data-i="${idx}" class="vote-btn">Vote</button></div>`;
+    playersList.appendChild(row);
+  });
+  playersList.querySelectorAll('.vote-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{ const i=+btn.dataset.i; if(localPlayers[i]) castVote(localPlayers[i].name); });
+  });
+  voteList.innerHTML = localPlayers.map(p=>
+    `<button class="vote-btn" data-name="${p.name}">${p.number?`${p.number}. `:""}${p.name}</button>`
+  ).join(" ");
+  voteList.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>castVote(b.dataset.name)));
+}
+function renderResults(votes){
+  const counts={}; Object.values(votes||{}).forEach(v=>{ counts[v]=(counts[v]||0)+1; });
+  const arr=Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+  voteCount.textContent = `${Object.keys(votes||{}).length} vote${Object.keys(votes||{}).length===1?"":"s"}`;
+  results.innerHTML = arr.length ? arr.map(([name,n])=>`<div style="padding:.35rem 0">${name}: <b>${n}</b></div>`).join("") : `<div class="muted">No votes yet</div>`;
+}
+async function castVote(name){
+  if(!code) return alert("Create or join a match first.");
+  const refDoc = doc(db,"matches",code);
+  const snap = await getDoc(refDoc);
+  const data = snap.data() || {};
+  const votes = data.votes || {};
+  votes[deviceId] = name;
+  await setDoc(refDoc,{ votes },{ merge:true });
+  voteState.textContent = "Voted";
+}
+
+/*** match actions ***/
+async function createMatch(){
+  code = makeCode(); matchCodeInput.value = code;
+  const refDoc = doc(db,"matches",code);
+  await setDoc(refDoc,{ team: teamName.value || "Team", players:[], votes:{}, created:new Date().toISOString(), logoDataUrl:"" });
+  localStorage.setItem("motm_last_code", code);
+  subscribe(code);
+  updateShare();
+}
+async function joinMatch(){
+  const c=(matchCodeInput.value||"").trim().toUpperCase();
+  if(!c) return alert("Enter a match code");
+  code=c; localStorage.setItem("motm_last_code", code);
+  subscribe(code);
+  updateShare();
+}
+async function ensurePasswordAndReset(){
+  if(!code) return alert("No match active");
+  const refDoc=doc(db,"matches",code);
+  const snap=await getDoc(refDoc);
+  const data=snap.data()||{};
+  const hasPass=!!data.passHash;
+  if(!hasPass){
+    const pass=prompt("Set a password for this match (used to reset votes):");
+    if(!pass) return;
+    const confirmPass=prompt("Confirm password:"); if(pass!==confirmPass){alert("Passwords do not match.");return;}
+    const hash=await sha256Base64(pass); await updateDoc(refDoc,{ passHash:hash });
+    alert("Password set. Press Reset again to clear votes.");
+    return;
+  }else{
+    const entry=prompt("Enter reset password:"); if(entry==null) return;
+    const hash=await sha256Base64(entry); if(hash!==data.passHash){alert("Incorrect password.");return;}
+    if(!confirm("Reset all votes for this match?")) return;
+    await updateDoc(refDoc,{ votes:{} }); alert("Votes reset.");
+  }
+}
+
+/*** logo upload (Firestore data URL, no Storage needed) ***/
+uploadBtn.addEventListener('click',()=>logoInput.click());
+logoImg.addEventListener('click',()=>logoInput.click());
+
+removeBtn.addEventListener('click', async()=>{
+  logoImg.src=""; logoImg.style.display='none'; logoInput.value="";
+  logoError.textContent="";
+  if(code){ await updateDoc(doc(db,"matches",code),{ logoDataUrl:"" }); }
+});
+
+logoInput.addEventListener('change', async (e)=>{
+  logoError.textContent="";
+  const file=e.target.files && e.target.files[0];
+  if(!file) return;
+  if(!code){ alert("Create or join a match first, then upload the logo."); return; }
+  try{
+    const dataUrl=await downscaleToDataUrl(file, 900, 0.75);
+    const bytes = Math.ceil((dataUrl.length*3)/4);
+    if(bytes > 900*1024){
+      logoError.textContent="Logo is still too large after compression. Please choose a smaller image (screenshot/crop).";
+      return;
+    }
+    await updateDoc(doc(db,"matches",code),{ logoDataUrl:dataUrl });
+    logoImg.src=dataUrl; logoImg.style.display='block';
+  }catch(err){
+    console.error(err);
+    logoError.textContent = err && err.message ? err.message : "Could not process image. Try a smaller JPG/PNG.";
+  }
+});
+
+async function downscaleToDataUrl(file, maxDim = 900, quality = 0.75) {
+  const bmp = await loadBitmap(file);
+  const width  = bmp.width  || bmp.naturalWidth;
+  const height = bmp.height || bmp.naturalHeight;
+  const scale = Math.min(1, maxDim / Math.max(width, height));
+  const outW = Math.max(1, Math.round(width * scale));
+  const outH = Math.max(1, Math.round(height * scale));
+  const canvas = document.createElement('canvas');
+  canvas.width = outW;
+  canvas.height = outH;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#FFFFFF';
+  ctx.fillRect(0, 0, outW, outH);
+  ctx.drawImage(bmp, 0, 0, outW, outH);
+  let dataUrl = canvas.toDataURL('image/jpeg', quality);
+  if (!dataUrl || dataUrl.length < 32) dataUrl = canvas.toDataURL('image/png');
+  try { bmp.close && bmp.close(); } catch {}
+  return dataUrl;
+}
+async function loadBitmap(file) {
+  const type = (file.type || '').toLowerCase();
+  const name = (file.name || '').toLowerCase();
+  if (type.includes('heic') || type.includes('heif') || name.endsWith('.heic') || name.endsWith('.heif')) {
+    throw new Error('This phone saved the photo as HEIC/HEIF, which the browser cannot decode. Open the photo, take a screenshot, or export as JPG/PNG and try again.');
+  }
+  if ('createImageBitmap' in window) {
+    try { return await createImageBitmap(file, { imageOrientation: 'from-image', premultiplyAlpha: 'default' }); } catch {}
+  }
+  return await new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => { URL.revokeObjectURL(url); resolve(img); };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('Image decode failed. Try a smaller image or screenshot.')); };
+    img.src = url;
+  });
+}
+
+/*** wiring ***/
+document.getElementById('addPlayer').addEventListener('click', async ()=>{
+  if(!code) return alert("Create or join a match first.");
+  const number=pNum.value.trim(); const name=pName.value.trim();
+  if(!name) return alert("Enter a player name");
+  const refDoc=doc(db,"matches",code); const snap=await getDoc(refDoc);
+  const d=snap.data()||{}; const players=d.players||[]; players.push({number,name});
+  await setDoc(refDoc,{players},{merge:true});
+  pNum.value=""; pName.value=""; pNum.focus();
+});
+btnCopy.addEventListener('click',()=>{
+  if(!shareLink.value) return;
+  navigator.clipboard.writeText(shareLink.value);
+  btnCopy.textContent="Copied!"; setTimeout(()=>btnCopy.textContent="Copy link",1200);
+});
+btnReset.addEventListener('click', ensurePasswordAndReset);
+btnNew.addEventListener('click', createMatch);
+btnJoin.addEventListener('click', joinMatch);
+
+const qs=new URLSearchParams(location.search);
+const incoming=(qs.get("match")||"").toUpperCase();
+const last=localStorage.getItem("motm_last_code")||"";
+if(incoming){ matchCodeInput.value=incoming; joinMatch(); }
+else if(last){ matchCodeInput.value=last; joinMatch(); }
 </script>
 </body>
 </html>
+
