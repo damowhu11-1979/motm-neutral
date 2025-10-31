@@ -37,7 +37,15 @@
   .muted{color:var(--muted);font-size:.92rem}
 
   #teamName{font-size:1.4rem;font-weight:700;padding:1rem .95rem;border:2px solid var(--accent);background:#fff}
-  #teamLogo{max-height:140px;max-width:95%;display:none;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,.1);object-fit:contain;background:#fff}
+
+  /* Default hidden, but show when a data URL is set */
+  #teamLogo{
+    max-height:140px;max-width:95%;
+    display:none;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,.1);
+    object-fit:contain;background:#fff
+  }
+  /* Safari/iOS hint: when data URL present, ensure visible */
+  #teamLogo[src^="data:image"]{display:block;max-width:100%;height:auto}
 
   main{padding:22px 0}
   .grid{display:grid;gap:18px;grid-template-columns:repeat(12,1fr)}
@@ -68,7 +76,7 @@
   <div class="wrap">
     <div id="logoSection" style="text-align:center;margin-bottom:12px">
       <input type="file" id="logoUpload" accept="image/*" style="display:none" />
-      <img id="teamLogo" src="" alt="Team logo">
+      <img id="teamLogo" alt="Team logo" decoding="sync" loading="eager" />
       <br>
       <div class="row" style="justify-content:center">
         <button id="uploadLogoBtn" class="btn btn-primary" type="button">Upload logo</button>
@@ -254,14 +262,29 @@ async function sha256Base64(text){
 function subscribe(c){
   if(unsub) unsub();
   const refDoc = doc(db,"matches",c);
-  unsub = onSnapshot(refDoc,(snap)=>{
+  unsub = onSnapshot(refDoc, async (snap)=>{
     const d=snap.data()||{};
     teamName.value = d.team || "";
-    if(d.logoDataUrl){ logoImg.src = d.logoDataUrl; logoImg.style.display='block'; }
+
+    // --- Safari/iOS: force repaint if same value is set twice ---
+    if (d.logoDataUrl) {
+      const fresh = d.logoDataUrl;
+      if (logoImg.src === fresh) {
+        logoImg.src = '';
+        await new Promise(r => requestAnimationFrame(r));
+      }
+      logoImg.src = fresh;
+      logoImg.style.display = 'block';
+    } else {
+      logoImg.removeAttribute('src');
+      logoImg.style.display = 'none';
+    }
+
     setPlayers(d.players || []);
     renderResults(d.votes || {});
   });
 }
+
 function setPlayers(list){
   localPlayers = list.slice().sort((a,b)=>(+a.number||0)-(+b.number||0));
   playerCount.textContent = `${localPlayers.length} player${localPlayers.length===1?"":"s"}`;
@@ -283,12 +306,14 @@ function setPlayers(list){
   ).join(" ");
   voteList.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>castVote(b.dataset.name)));
 }
+
 function renderResults(votes){
   const counts={}; Object.values(votes||{}).forEach(v=>{ counts[v]=(counts[v]||0)+1; });
   const arr=Object.entries(counts).sort((a,b)=>b[1]-a[1]);
   voteCount.textContent = `${Object.keys(votes||{}).length} vote${Object.keys(votes||{}).length===1?"":"s"}`;
   results.innerHTML = arr.length ? arr.map(([name,n])=>`<div style="padding:.35rem 0">${name}: <b>${n}</b></div>`).join("") : `<div class="muted">No votes yet</div>`;
 }
+
 async function castVote(name){
   if(!code) return alert("Create or join a match first.");
   const refDoc = doc(db,"matches",code);
@@ -360,7 +385,14 @@ logoInput.addEventListener('change', async (e)=>{
       return;
     }
     await updateDoc(doc(db,"matches",code),{ logoDataUrl:dataUrl });
-    logoImg.src=dataUrl; logoImg.style.display='block';
+
+    // Safari/iOS repaint nudge
+    if (logoImg.src === dataUrl) {
+      logoImg.src = '';
+      await new Promise(r => requestAnimationFrame(r));
+    }
+    logoImg.src = dataUrl;
+    logoImg.style.display='block';
   }catch(err){
     console.error(err);
     logoError.textContent = err && err.message ? err.message : "Could not process image. Try a smaller JPG/PNG.";
@@ -429,14 +461,13 @@ const last=localStorage.getItem("motm_last_code")||"";
 if(incoming){ matchCodeInput.value=incoming; joinMatch(); }
 else if(last){ matchCodeInput.value=last; joinMatch(); }
 </script>
-</body>
-</html>
-  <!-- … keep your existing code above … -->
 
-  <!-- EffectiveGate ad widget -->
-  <script async="async" data-cfasync="false"
-          src="//pl27961709.effectivegatecpm.com/3ce421775096571097d2c7c891201463/invoke.js"></script>
-  <div id="container-3ce421775096571097d2c7c891201463"></div>
+<!-- EffectiveGate ad widget (keep inside body, only once) -->
+<script async="async" data-cfasync="false"
+        src="//pl27961709.effectivegatecpm.com/3ce421775096571097d2c7c891201463/invoke.js"></script>
+<div id="container-3ce421775096571097d2c7c891201463"></div>
+
 </body>
 </html>
+
 
