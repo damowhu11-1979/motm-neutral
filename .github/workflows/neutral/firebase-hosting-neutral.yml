@@ -1,0 +1,20 @@
+name: Deploy to Firebase Hosting (motm-neutral)
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'neutral/**'
+      - '.github/workflows/firebase-hosting-neutral.yml'
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_MOTM_NEUTRAL }}'
+          projectId: motm-neutral
+          channelId: live
+          entryPoint: neutral
