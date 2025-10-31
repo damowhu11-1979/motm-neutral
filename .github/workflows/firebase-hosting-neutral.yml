@@ -17,4 +17,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_MOTM_NEUTRAL }}'
           projectId: motm-neutral
           channelId: live
-          entryPoint: neutral
+          entryPoint:
