@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "site": "motm-neutral",
+    "public": "neutral",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}
